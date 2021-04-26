@@ -352,5 +352,29 @@ html {
 }
 
 #footer {
+    padding: 64px 16px;
+    text-align: center;
+}
 
+#footer .social-lists {
+    font-size:24px;
+}
+
+#footer .social-lists a {
+    text-decoration: none;
+    color : rgba(0,0,0,0.6)
+}
+
+#footer .social-lists a:hover,
+#footer .copyright   a:hover {
+    color : rgba(0,0,0,0.4)
+}
+
+#footer .copyright {
+    font-size: 15px;
+    margin-top: 15px;
+}
+
+#footer .copyright a {
+    color : rgba(0,0,0,0.6)
 }
