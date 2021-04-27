@@ -30,12 +30,12 @@ app.get('/news', (req, res) => {
 })
 
 app.get('/search', (req, res) => {
-  console.log(req.query)  // lấy key query trong req
+  // console.log(req.query)  // lấy key query trong req
   res.render('search')
 })
 
 app.post('/search', (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
   res.send('')
 })
 
