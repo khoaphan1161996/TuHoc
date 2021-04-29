@@ -35,7 +35,7 @@ app.get('/search', (req, res) => {
 })
 
 app.post('/search', (req, res) => {
-  // console.log(req.body)
+  // console.log(req.body)    // lấy dữ liệu trong form data sẽ .body
   res.send('')
 })
 
