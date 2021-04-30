@@ -120,9 +120,17 @@ html {
     font-size:14px
 }
 
+#header .moblie-menu-btn,
 #header .search-btn {
     float:right;
     padding: 0 23px
+}
+
+#header .moblie-menu-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
 }
 
 #header .search-btn:hover {
@@ -130,6 +138,15 @@ html {
     cursor: pointer;
 }
 
+#header .moblie-menu-btn:hover {
+    background-color: #ccc;
+}
+
+#header .moblie-menu-btn:hover .menu-icon {
+    color: #000
+}
+
+#header .menu-icon,
 #header .search-icon {
     color: #fff;
     line-height:46px;
@@ -139,7 +156,7 @@ html {
     position: relative;
     margin-top: 46px;
     padding-top: 50%;       /* 50% chiều cao của chính nó */
-    background: url(/w3_band/assets/img/slider/chicago.jpg) top center / cover no-repeat 
+    background: url(../img/slider/chicago.jpg) top center / cover no-repeat 
 }
 
 #slider .text-content {
@@ -167,6 +184,7 @@ html {
 
 #content .content-section {
     width:800px;
+    max-width: 100%;   /* giúp responsive tablet */
     padding: 64px 16px;
     margin-left: auto;
     margin-right:auto
@@ -257,7 +275,7 @@ html {
 }
 
 #content .place-list {
-    margin-top:32px;
+    margin-top:16px;
     margin-bottom: 48px
 }
 
@@ -301,6 +319,7 @@ html {
     padding: 8px 16px;
     margin-top:15px;
     display: inline-block;  /* Vì thẻ a là inline sẽ tự cách thẻ p div 1 khoảng */
+    text-align: center;
 }
 
 #content .place-buy-btn:hover {
