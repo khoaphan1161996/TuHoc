@@ -10,9 +10,10 @@
 // Video 25:
 // Backslash (\): Để hiển thị được chuỗi chứa dấu gạch chéo ngược (\) ta phải thêm dấu \ vào trước hoặc sau nó.
 // Làm việc với chuỗi: 
-// + Cut string: Chuỗi.slice(4,6) hoặc Chuỗi.slice(4)
-// + Replace string: Chuỗi.replace('JS','Javascript') hoặc dùng biểu thức 9 quy lấy tất cả 'JS' Chuỗi.replace(/JS/g,'Javascript')
-// + Get character by index: Chuỗi.charAt(1) hoặc Chuỗi[1]
+// + Find index: Chuỗi.indexOf(''), hàm này trả ra vị trí tìm được, không tìm dc trả ra -1
+// + Cut string: Chuỗi.slice(4,6) hoặc Chuỗi.slice(4), hàm này trả ra string
+// + Replace string: Chuỗi.replace('JS','Javascript') hoặc dùng biểu thức 9 quy lấy tất cả 'JS' Chuỗi.replace(/JS/g,'Javascript') 
+// + Get character by index: Chuỗi.charAt(1) hoặc Chuỗi[1] , trả ra 1 kí tự string
 
 // Video 26
 // Number.isFinite()	        : Xác định xem giá trị đã cho có phải là số hữu hạn hay không. Trả về boolean
@@ -34,11 +35,11 @@
 // Video 31: arguments( truyền đối số vào function)
 // function writeLog(){
 //     console.log(arguments)   // arguments là biến lưu các đối số truyền vào
-// }
+// }                            // arguments là Array-Like Objects không phải là một Arrays chính thống nên kiểm tra type sẽ ko phải array
 
 // function writeLog(){
 //     var myString = ''
-//     for (var param of arguments) {  // dùng for ... of trong object
+//     for (var param of arguments) {
 //         myString += param + ` `
 //     }
 //     console.log(myString)
@@ -48,7 +49,7 @@
 // Video 34: Các loại function
 // Khi tạo ra 2 function trùng tên thì hàm sẽ chỉ thực thi function khai báo sau
 // Declaration function(là function thường) ; Expression function ; Arrow function trong ES6
-// Expression function : như callback
+// Expression function : như callback(hàm được truyền dưới dạng tham số)
 // + var showMessage = function(){} ; 
 // + setTimeout(function(){},1000) ; 
 // var myObject = {
@@ -56,7 +57,6 @@
 // }
 
 // Video 35: Xài this trong obj
-
 // var myInfo = {
 //     name: 'Khoa',
 //     age: 25,
@@ -92,3 +92,67 @@
 // console.log(user)
 // console.log(author.className)
 // console.log(author.getClassName())
+
+// Video 46 47: 
+// dùng for ... in để lặp qua key, 
+// có thể lặp qua string, array, object
+
+// for ... of để lặp qua value
+// chỉ có thể lặp qua string và array, object không được lặp sẽ lỗi
+// cách khắc phục
+// var myInfo = {
+//     name: 'Son Dang',
+//     age: 25
+// }
+
+// for(var value of Object.values(myInfo)) {
+//     console.log(value)
+// }
+
+// for(var value of Object.keys(myInfo)) {  // Cách xàm lol
+//     console.log(myInfo[value])
+// }
+
+// Video 53: Làm việc với mảng 2
+// + array.forEach() : dùng để duyệt qua phần tử mảng, array.forEach() ,truyền 1 callback vào foreach với 2 tham số là phần tử mảng và index , ==> forEach dùng y hệt for loop
+// + array.every() : dùng để kiểm tra Tất Cả các phần tử của mảng phải thỏa dk gì đó. every() trả về giá trị boolean
+// + array.some() : dùng để kiểm tra Tất Cả các phần tử của mảng, chỉ cần 1 phần tử thỏa ==> true. every() trả về giá trị boolean
+// + array.find() : lặp qua tất cả, find trả phần tử tìm thấy đầu tiên trong mảng, không có trả undefined
+// + array.filter() : giống find() nhưng trả tất cả phần tử tìm thấy, trả tất cả phần tử tìm thấy trong mảng
+
+// Video 54: map(): Dùng khi muốn thay đổi element của array
+// trả về 1 mảng mới có số phần tử = số phần tử mảng cũ
+// array.map()
+
+// Video 55: reduce(): muốn tích trữ trong reduce: return cái gì thì tích trữ cái đó
+// trả về 1 giá trị tích lũy
+// arrray.reduce(function(accumulator,currentValue){
+//     return accumulator + currentValue
+// },0)    // 0 là initial value:giá trị ban đầu này sẽ quyết định giá trị trả về (ta muốn dữ liệu như nào), có thể là [] , {}
+
+// Video 57: Includes method: tồn tại sẵn trong prototype của array và string, các kiểu dữ liệu khác(Number, Object,Date,..) sẽ không có method này
+// trả về boolean , thường dùng để kiểm tra từ có tồn tại trong Chuỗi ko , trong Array không
+// Chuỗi.includes('từ muốn tìm',position) , Array.includes('từ muốn tìm',position)
+
+// Video 59: callback: là hàm, được truyền qua Đối số, và được gọi lại trong hàm nhận đối số
+
+// Video 60: cách tạo ra method map, chọc vào prototpe của contructor array
+// var courses = ['PHP','Javascript','Ruby']
+
+// Array.prototype.map2 = function(callback) {    // chọc vào prototpe của contructor array rồi tạo method
+//     var output = []                            // còn bổ sung thêm 1 vài cách check đúng sai
+//     for(var index in this ){
+//         if(this.hasOwnProperty(index)){        // kiểm tra các phần tử mà không phải trong proto
+//             var result = callback(this[index],index)
+//             output.push(result)
+//         }
+//     }
+//     return output
+// }
+
+// var htmls = courses.map2(function(course,index){
+//     return `<h2>${course}</h2>`
+// })
+
+// console.log(htmls.join(''))
+
