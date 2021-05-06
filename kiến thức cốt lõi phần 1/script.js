@@ -7,7 +7,7 @@
 // 6 kiểu Falsy: 1.false; 0; '' or "" (chuỗi rỗng); null; undefined; NaN: khi kiểm tra số thì kiểm tra NaN vì NaN có typeof = Number,
 // nếu không kiểm tra thì người ta truyền đối số = NaN vào sẽ check sai : isNaN() : trả ra boolean
 
-// Video 25:
+// Video 26:
 // Backslash (\): Để hiển thị được chuỗi chứa dấu gạch chéo ngược (\) ta phải thêm dấu \ vào trước hoặc sau nó.
 // Làm việc với chuỗi: 
 // + Find index: Chuỗi.indexOf(''), hàm này trả ra vị trí tìm được, không tìm dc trả ra -1
@@ -15,7 +15,7 @@
 // + Replace string: Chuỗi.replace('JS','Javascript') hoặc dùng biểu thức 9 quy lấy tất cả 'JS' Chuỗi.replace(/JS/g,'Javascript') 
 // + Get character by index: Chuỗi.charAt(1) hoặc Chuỗi[1] , trả ra 1 kí tự string
 
-// Video 26
+// Video 27
 // Number.isFinite()	        : Xác định xem giá trị đã cho có phải là số hữu hạn hay không. Trả về boolean
 // Number.isInteger()	        : Xác định xem giá trị đã cho có phải là số nguyên hay không. Trả về boolean
 // Number.parseFloat()	        : Chuyển đổi chuỗi đã cho thành một số dấu phẩy động
