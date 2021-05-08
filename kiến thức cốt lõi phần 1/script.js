@@ -84,6 +84,7 @@
 
 // let author = new User('Son','Dang','avatar'); // cách tạo 1 model kế thừa từ OC
 // let user = new User('Khoa','Phan','avatar');
+// (từ khóa new trước objectContructor trả 1 đối tượng dc tạo ra từ objectContructor )
 
 // author.title = 'Chia sẻ dạo tại F8';   // key value tạo ngoài ko có ảnh hưởng đến contructor
 // user.comment = 'Cảm ơn anh Sơn nhiều'
