@@ -50,7 +50,7 @@
 //     console.log(e.target.value)
 // }
 
-// input.oninput = function (e) {         // onchange lắng nghe value của input khác với value ban đầu, gõ tới đâu lấy tới đó
+// input.oninput = function (e) {         // oninput lắng nghe value của input khác với value ban đầu, gõ tới đâu lấy tới đó
 //     console.log(e.target.value)
 // }
 
