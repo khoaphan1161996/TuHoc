@@ -93,23 +93,3 @@
 // npm start
 
 // Video 93: POSTMAN
-
-// Video 94: VD
-// var listCoursesBlock = document.getElementById('list-courses')
-// var coursesApi = 'http://localhost:3000/courses'
-
-// function start() {
-//     getCourses(function(courses) {
-        
-//     })
-// }
-
-// start()
-
-// function getCourses(callback) {
-//     fetch()
-//         .then(function (response) {
-//             return response.json()
-//         })
-//         .then(callback)
-// }
