@@ -1,0 +1,12 @@
+h3 {
+  color: #7B1FA2; }
+
+.content {
+  background-color: #7B1FA2;
+  padding: 10px;
+  color: #fff; }
+  .content a {
+    font-size: 32px; }
+
+span {
+  border-bottom: solid 1px #7B1FA2; }
