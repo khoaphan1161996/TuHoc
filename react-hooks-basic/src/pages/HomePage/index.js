@@ -52,7 +52,7 @@ const HomePage = () => {
     }
 
     const handleDelTodoList = (todo) => {
-        const index = todoList.find(todos => todos.id === todo.id)
+        const index = todoList.findIndex(todos => todos.id === todo.id)
         if(index < 0) return; // không tìm thấy
 
         else {
@@ -66,12 +66,12 @@ const HomePage = () => {
         <div className="home-page">
             {/* <ColorBox /> */}
 
-            {/* <TodoForm handleAddTodoList={handleAddTodoList} /> */}
-            {/* <ul className="todo-list">
+            <TodoForm handleAddTodoList={handleAddTodoList} />
+            <ul className="todo-list">
                 {todoList.map(todo => <TodoList todo = {todo} 
                     key = {todo.id}
                     handleDelTodoList = {handleDelTodoList} />)}
-            </ul> */}
+            </ul>
 
             <ul>
                {postList.map(post => <PostList
