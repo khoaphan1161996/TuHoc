@@ -2,7 +2,10 @@ import { useState } from "react";
 
 import TaskItem from '../TaskItem'
 
-function TaskList() {
+function TaskList(props) {
+  const {tasks,onUpdateStatus,onDeleteTask} = props;
+  const {id} = tasks
+
   return (
     <table className="table table-bordered table-hover">
     <thead>
@@ -36,7 +39,8 @@ function TaskList() {
         </td>
         <td></td>
       </tr>
-      <TaskItem />
+      {props.tasks.map((task,index) => <TaskItem key={id} task={task}
+       index={index} onUpdateStatus={onUpdateStatus} onDeleteTask={onDeleteTask} />)}
     </tbody>
 </table>
   );
