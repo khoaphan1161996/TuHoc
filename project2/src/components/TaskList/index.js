@@ -3,7 +3,7 @@ import { useState } from "react";
 import TaskItem from '../TaskItem'
 
 function TaskList(props) {
-  const {tasks,onUpdateStatus,onDeleteTask} = props;
+  const {tasks,onUpdateStatus,onDeleteTask,onUpdateTask} = props;
   const {id} = tasks
 
   return (
@@ -40,7 +40,8 @@ function TaskList(props) {
         <td></td>
       </tr>
       {props.tasks.map((task,index) => <TaskItem key={id} task={task}
-       index={index} onUpdateStatus={onUpdateStatus} onDeleteTask={onDeleteTask} />)}
+       index={index} onUpdateStatus={onUpdateStatus}
+        onDeleteTask={onDeleteTask} onUpdateTask={onUpdateTask} />)}
     </tbody>
 </table>
   );

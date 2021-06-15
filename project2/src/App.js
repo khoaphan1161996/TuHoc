@@ -10,6 +10,7 @@ import TaskList from './components/TaskList'
 function App() {
   const [tasks,setTasks] = useState([])
   const [isDisplayForm, setIsDisplayForm] = useState(true)
+  const [taskEditing, setTaskEditing] = useState(null)
 
   // componentWillMount set List nếu đã có
   useEffect(() => {
@@ -44,27 +45,57 @@ function App() {
   }
 
   // Submit add
-  const onSubmit = (name,status) => {
+  const onSubmit = (name,status,id) => {
     const  newTaskList = [...tasks]
-    const  newTask = {
-      id: uuidv4(),
-      name,
-      status
+
+    // Thêm công việc
+    if(id === '') {
+      const  newTask = {
+        id: uuidv4(),
+        name,
+        status
+      }
+
+      newTaskList.push(newTask)
+    }
+    // Cập nhập công việc
+    else {
+      const indexUpdate = tasks.findIndex(task => task.id === id)
+      const  newTask = {
+        id,
+        name,
+        status
+      }
+
+      newTaskList[indexUpdate] = newTask
+      setTaskEditing(null)
     }
 
-    newTaskList.push(newTask)
     setTasks(newTaskList)
     sessionStorage.setItem('tasks', JSON.stringify(newTaskList))
   }
 
   // Đóng mở Component Form
   const onToggleForm = () => {
-    setIsDisplayForm(!isDisplayForm)
+    // Khi đang hiện Form thêm công việc thì bấm vào nút không cho đóng
+    if(isDisplayForm && taskEditing === null) {
+      setIsDisplayForm(true)
+      setTaskEditing(null)
+    }
+    else {
+      setIsDisplayForm(!isDisplayForm)
+      setTaskEditing(null)
+    }
   }
 
   // Đóng Component Form khi X
   const onCloseForm = () => {
     setIsDisplayForm(false)
+  }
+
+  // Mở Component Form
+  const onShowForm = () => {
+    setIsDisplayForm(true)
   }
 
   // Update Status
@@ -100,6 +131,18 @@ function App() {
     }
   }
 
+  // Update Task: tạo ra 1 state để lưu giá trị của task cần thay đổi, truyền state
+  // này xuống kèm theo đầy đủ yếu tố và sau đó cập nhập lại state con và
+  // truyền id ngược lên
+  const onUpdateTask = (id) => {
+    const taskUpdate = tasks.find(task => task.id === id)
+
+    if(taskUpdate){
+      setTaskEditing(taskUpdate)
+      onShowForm()
+    }
+  }
+
   return (
     <div className="container">
       <div className="text-center">
@@ -111,7 +154,7 @@ function App() {
         <div className={isDisplayForm ? "col-xs-4 col-sm-4 col-md-4 col-lg-4" : ''}>
           {/* Form */}
             {isDisplayForm ? <TaskForm onCloseForm={onCloseForm} 
-            onSubmit={onSubmit} /> : ''}
+            onSubmit={onSubmit} taskEditing={taskEditing} /> : ''}
         </div>
 
         <div className={isDisplayForm ? "col-xs-8 col-sm-8 col-md-8 col-lg-8" :
@@ -130,7 +173,7 @@ function App() {
             <div className="row mt-3">
               <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <TaskList tasks={tasks} onUpdateStatus={onUpdateStatus}
-                onDeleteTask={onDeleteTask} />
+                onDeleteTask={onDeleteTask} onUpdateTask={onUpdateTask} />
               </div>
             </div>
         </div>

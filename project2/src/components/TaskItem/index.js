@@ -9,8 +9,14 @@ function TaskItem(props) {
     props.onUpdateStatus(id)
   }
 
+  // Delete Task
   const onDeleteTask = (id) => {
     props.onDeleteTask(id)
+  }
+
+  // Update Task
+  const onUpdateTask = (id) => {
+    props.onUpdateTask(id)
   }
 
   return (
@@ -23,7 +29,9 @@ function TaskItem(props) {
         >{status ? 'Kích hoạt' : 'Ẩn'}</span>
       </td>
       <td className="text-center">
-        <button className="btn btn-warning">
+        <button className="btn btn-warning"
+          onClick={() => onUpdateTask(id)}
+        >
           <span className="fa fa-pencil mr-5"></span>Sửa
         </button>
         &nbsp;

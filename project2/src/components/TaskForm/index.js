@@ -1,8 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function TaskForm(props) {
   const [name,setName] = useState('')
   const [status,setStatus] = useState(true)
+  const [id,setId] = useState('')
+
+  useEffect(() => {
+    if(props.taskEditing){
+      setName(props.taskEditing.name)
+      setStatus(props.taskEditing.status)
+      setId(props.taskEditing.id)
+    }
+  },[])
+
+  useEffect(() => {
+    if(props.taskEditing){
+      setName(props.taskEditing.name)
+      setStatus(props.taskEditing.status)
+      setId(props.taskEditing.id)
+    }
+
+    else if(!props.taskEditing) {
+      console.log('sửa->thêm')
+    }
+  },[props.taskEditing])
 
   // Khi onChange setState 
   const onChangeValue = (e) => {
@@ -16,7 +37,7 @@ function TaskForm(props) {
   // Submit Form
   const onSubmit = (e) => {
     e.preventDefault()
-    props.onSubmit(name,status)
+    props.onSubmit(name,status,id)
     // Clear
     onClear()
     onCloseForm()
@@ -37,7 +58,7 @@ function TaskForm(props) {
     <div className="card card-warning">
       <div className="card-heading bg-warning ms-3">
         <h3 className="card-title">
-          Thêm công việc
+          {id === '' ? 'Thêm công việc' : 'Cập nhập công việc'}
           <span className="fa fa-times-circle ms-3"
             onClick={onCloseForm}
           ></span>
