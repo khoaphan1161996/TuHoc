@@ -9,7 +9,7 @@ import TaskList from './components/TaskList'
 
 function App() {
   const [tasks,setTasks] = useState([])
-  const [isDisplayForm, setIsDisplayForm] = useState(true)
+  const [isDisplayForm, setIsDisplayForm] = useState(false)
   const [taskEditing, setTaskEditing] = useState(null)
 
   // componentWillMount set List nếu đã có
