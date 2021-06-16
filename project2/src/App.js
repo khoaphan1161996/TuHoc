@@ -11,6 +11,10 @@ function App() {
   const [tasks,setTasks] = useState([])
   const [isDisplayForm, setIsDisplayForm] = useState(false)
   const [taskEditing, setTaskEditing] = useState(null)
+  const [filter,setFilter] = useState({
+    name: '',
+    status:-1
+  })
 
   // componentWillMount set List nếu đã có
   useEffect(() => {
@@ -143,6 +147,16 @@ function App() {
     }
   }
 
+  // Filter
+  const onFilter = (filterName,filterStatus) => {
+    parseInt(filterStatus, 10)
+
+    setFilter({
+      name: filterName,
+      status:filterStatus
+    })
+  }
+
   return (
     <div className="container">
       <div className="text-center">
@@ -172,8 +186,9 @@ function App() {
             {/* List */}
             <div className="row mt-3">
               <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <TaskList tasks={tasks} onUpdateStatus={onUpdateStatus}
-                onDeleteTask={onDeleteTask} onUpdateTask={onUpdateTask} />
+                <TaskList
+                tasks={tasks} onUpdateStatus={onUpdateStatus} onDeleteTask={onDeleteTask} 
+                onUpdateTask={onUpdateTask} onFilter={onFilter} />
               </div>
             </div>
         </div>

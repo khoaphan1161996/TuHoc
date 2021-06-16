@@ -6,6 +6,22 @@ function TaskList(props) {
   const {tasks,onUpdateStatus,onDeleteTask,onUpdateTask} = props;
   const {id} = tasks
 
+  const [filterName,setFilterName] = useState('')
+  const [filterStatus,setFilterStatus] = useState(-1)// all:-1; active:1; deactive:0
+
+  // Filter
+  const onChangeFilter = (e) => {
+    const target = e.target
+    const name = target.name
+    const value = target.value
+    if(name === 'filterName') setFilterName(value)
+    else {setFilterStatus(value)}
+    props.onFilter(
+      name === 'filterName' ? value : filterName,
+      name === 'filterStatus' ? value : filterStatus
+    )
+  }
+
   return (
     <table className="table table-bordered table-hover">
     <thead>
@@ -25,12 +41,16 @@ function TaskList(props) {
             type="text"
             className="form-control"
             name="filterName"
+            value={filterName}
+            onChange={onChangeFilter}
           />
         </td>
         <td>
           <select
             className="form-control"
             name="filterStatus"
+            value={filterStatus}
+            onChange={onChangeFilter}
           >
             <option value={-1}>Tất cả</option>
             <option value={0}>Ẩn</option>
@@ -39,7 +59,7 @@ function TaskList(props) {
         </td>
         <td></td>
       </tr>
-      {props.tasks.map((task,index) => <TaskItem key={id} task={task}
+      {tasks.map((task,index) => <TaskItem key={id} task={task}
        index={index} onUpdateStatus={onUpdateStatus}
         onDeleteTask={onDeleteTask} onUpdateTask={onUpdateTask} />)}
     </tbody>
