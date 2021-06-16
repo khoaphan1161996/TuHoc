@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 function TaskItem(props) {
   const {index,task} = props;
   const {id,name,status} = task
