@@ -15,6 +15,7 @@ function App() {
     name: '',
     status:-1
   })
+  const [keyword,setKeyword] = useState('')
 
   // componentWillMount set List nếu đã có
   useEffect(() => {
@@ -155,6 +156,12 @@ function App() {
     })
   }
 
+  // Search
+  const onSearch = (keyword) => {
+    setKeyword(keyword)
+  }
+
+  // Render có Filter
   if(filter) {
     // Filter Input
     if(filter.name) {
@@ -169,6 +176,11 @@ function App() {
         return task.status === (filter.status === 1 ? true : false)
       }
     })
+  }
+
+  // Render có Search
+  if(keyword) {
+    tasks = tasks.filter(task => task.name.toLowerCase().indexOf(keyword) !== -1) 
   }
 
   return (
@@ -195,7 +207,7 @@ function App() {
           </button>
 
           {/* Search - Sort */}
-            <Controls />
+            <Controls onSearch={onSearch} />
 
             {/* List */}
             <div className="row mt-3">
