@@ -8,7 +8,7 @@ import Controls from './components/Controls'
 import TaskList from './components/TaskList'
 
 function App() {
-  const [tasks,setTasks] = useState([])
+  let [tasks,setTasks] = useState([])
   const [isDisplayForm, setIsDisplayForm] = useState(false)
   const [taskEditing, setTaskEditing] = useState(null)
   const [filter,setFilter] = useState({
@@ -149,11 +149,25 @@ function App() {
 
   // Filter
   const onFilter = (filterName,filterStatus) => {
-    parseInt(filterStatus, 10)
-
     setFilter({
-      name: filterName,
+      name: filterName.toLowerCase(),
       status:filterStatus
+    })
+  }
+
+  if(filter) {
+    // Filter Input
+    if(filter.name) {
+      tasks = tasks.filter(task => task.name.toLowerCase().indexOf(filter.name) !== -1) 
+    }
+    // Filter Select
+    tasks = tasks.filter(task => {
+      if(filter.status === -1) {
+        return task
+      }
+      else {
+        return task.status === (filter.status === 1 ? true : false)
+      }
     })
   }
 

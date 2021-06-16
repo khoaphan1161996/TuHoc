@@ -18,7 +18,7 @@ function TaskList(props) {
     else {setFilterStatus(value)}
     props.onFilter(
       name === 'filterName' ? value : filterName,
-      name === 'filterStatus' ? value : filterStatus
+      name === 'filterStatus' ? Number(value)  : Number(filterStatus) 
     )
   }
 
