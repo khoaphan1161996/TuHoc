@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.3a0e23ce.chunk.css",
-    "main.js": "/static/js/main.36746732.chunk.js",
-    "main.js.map": "/static/js/main.36746732.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.d120b254.js",
-    "runtime-main.js.map": "/static/js/runtime-main.d120b254.js.map",
-    "static/js/2.09177dfd.chunk.js": "/static/js/2.09177dfd.chunk.js",
-    "static/js/2.09177dfd.chunk.js.map": "/static/js/2.09177dfd.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.3a0e23ce.chunk.css.map": "/static/css/main.3a0e23ce.chunk.css.map",
-    "static/js/2.09177dfd.chunk.js.LICENSE.txt": "/static/js/2.09177dfd.chunk.js.LICENSE.txt"
+    "main.css": "/TuHoc/static/css/main.3a0e23ce.chunk.css",
+    "main.js": "/TuHoc/static/js/main.36746732.chunk.js",
+    "main.js.map": "/TuHoc/static/js/main.36746732.chunk.js.map",
+    "runtime-main.js": "/TuHoc/static/js/runtime-main.c7c758ab.js",
+    "runtime-main.js.map": "/TuHoc/static/js/runtime-main.c7c758ab.js.map",
+    "static/js/2.09177dfd.chunk.js": "/TuHoc/static/js/2.09177dfd.chunk.js",
+    "static/js/2.09177dfd.chunk.js.map": "/TuHoc/static/js/2.09177dfd.chunk.js.map",
+    "index.html": "/TuHoc/index.html",
+    "static/css/main.3a0e23ce.chunk.css.map": "/TuHoc/static/css/main.3a0e23ce.chunk.css.map",
+    "static/js/2.09177dfd.chunk.js.LICENSE.txt": "/TuHoc/static/js/2.09177dfd.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.d120b254.js",
+    "static/js/runtime-main.c7c758ab.js",
     "static/js/2.09177dfd.chunk.js",
     "static/css/main.3a0e23ce.chunk.css",
     "static/js/main.36746732.chunk.js"
