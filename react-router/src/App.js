@@ -1,47 +1,82 @@
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
+import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
+
+import routes from './routes'
 
 import "./App.css";
+
+const menus = [
+  {
+    name: "Trang chủ",
+    to: "/",
+    exact: true
+  },
+  {
+    name: "Giới thiệu",
+    to: "/about",
+    exact: false
+  },
+  {
+    name: "Liên hệ",
+    to: "/contact",
+    exact: false
+  },
+  {
+    name: "Sản phẩm",
+    to: "/products",
+    exact: false
+  }
+]
+
 function App() {
+  const showMenus = (menus) => {
+    let result = null
+
+    if(menus.length > 0) {
+      result = menus.map((menu,index) => {
+        return <li className="nav-item" key={index}>
+          <NavLink className="link" activeClassName="selected" 
+            exact={menu.exact} to={menu.to}>
+              {menu.name}
+          </NavLink>
+        </li>
+      })
+    }
+
+    return result
+  }
+
+  const showRoute = (routes) => {
+    let result = null
+
+    if(routes.length > 0) {
+      result = routes.map((route,index) => {
+        return <Route key={index} path={route.path} 
+        exact={route.exact} component={route.component}
+        />
+      })
+    }
+
+    return result
+  }
+
   return (
     <Router>
       <div className="app">
-        {/* Menu */}
+        {/* Header */}
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container-fluid">
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav">
-                <li className="nav-item">
-                  <Link to="/">Trang chủ</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/about">Giới thiệu</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/contact">Liên hệ</Link>
-                </li>
+                {showMenus(menus)}
               </ul>
             </div>
           </div>
         </nav>
 
-        {/* Nội dung */}
-        <Route path="/" exact component={HomePage}/>
-        <Route path="/about" component={About}/>
-        <Route path="/contact" component={Contact} />
+        {/* Content */}
+        <Switch>
+          {showRoute(routes)}
+        </Switch>
       </div>
     </Router>
   );
