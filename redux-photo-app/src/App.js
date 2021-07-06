@@ -15,9 +15,9 @@ function App() {
           <Header />
 
           <Switch>
-            <Redirect exact from="/" to="/photo" />
+            <Redirect exact from="/" to="/photos" />
 
-            <Route path="/photo" component={Photo} />
+            <Route path="/photos" component={Photo} />
             <Route component={NotFound} />
           </Switch>
         </Router>
