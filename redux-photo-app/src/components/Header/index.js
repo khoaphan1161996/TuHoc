@@ -13,11 +13,11 @@ function Header() {
           <Col xs="auto">
             <a
               className="header__link header__title"
-              href="https://youtube.com/easyfrontend"
+              href="https://www.youtube.com/watch?v=1NywJvNpgAI&list=RD1NywJvNpgAI&start_radio=1"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Easy Frontend
+              Music
             </a>
           </Col>
 
