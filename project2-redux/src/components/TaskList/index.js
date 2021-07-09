@@ -1,9 +1,12 @@
 import { useState } from "react";
-import { connect } from "react-redux"
+import { useSelector } from 'react-redux';
 
-import TaskItem from '../TaskItem'
+import TaskItem from '../TaskItem';
 
 function TaskList(props) {
+  // Cách kết nối react store
+  const tasks = useSelector(state => state.tasks)
+
   const {onUpdateStatus,onDeleteTask,onUpdateTask} = props;
 
   const [filterName,setFilterName] = useState('')
@@ -22,7 +25,6 @@ function TaskList(props) {
     )
   }
 
-  // console.log(props.tasks)
 
   return (
     <table className="table table-bordered table-hover">
@@ -61,7 +63,7 @@ function TaskList(props) {
         </td>
         <td></td>
       </tr>
-      {props.tasks.map((task,index) => <TaskItem key={task.id} task={task}
+      {tasks.map((task,index) => <TaskItem key={task.id} task={task}
        index={index} onUpdateStatus={onUpdateStatus}
         onDeleteTask={onDeleteTask} onUpdateTask={onUpdateTask} />)}
     </tbody>
@@ -69,10 +71,4 @@ function TaskList(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    tasks: state.task
-  }
-}
-
-export default connect(mapStateToProps,null)(TaskList);
+export default TaskList;

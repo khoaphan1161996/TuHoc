@@ -7,7 +7,7 @@ import TaskForm from './components/TaskForm'
 import Controls from './components/Controls'
 import TaskList from './components/TaskList'
 
-import demo from './trainning/demo'
+// import demo from './trainning/demo'
 
 function App() {
   let [tasks,setTasks] = useState([])

@@ -6,13 +6,13 @@ function TaskForm(props) {
   const [id,setId] = useState('')
 
   // ComponentWillMount để setState lần đầu, sửa lần đầu
-  useEffect(() => {
-    if(props.taskEditing){
-      setName(props.taskEditing.name)
-      setStatus(props.taskEditing.status)
-      setId(props.taskEditing.id)
-    }
-  },[])
+  // useEffect(() => {
+  //   if(props.taskEditing){
+  //     setName(props.taskEditing.name)
+  //     setStatus(props.taskEditing.status)
+  //     setId(props.taskEditing.id)
+  //   }
+  // },[])
 
   // ComponentWillReceiveprops để sửa khi đã có dữ liệu
   useEffect(() => {
