@@ -1,4 +1,4 @@
-let challenge = '30 Days Of JavaScript'
+// let challenge = '30 Days Of JavaScript'
 
 // console.log(challenge)
 // console.log(challenge.length)
@@ -8,5 +8,5 @@ let challenge = '30 Days Of JavaScript'
 // console.log(challenge.slice(3))
 // console.log(challenge.includes('Script'))
 // console.log(challenge.split(''))
-console.log(challenge.split(' '))
+// console.log(challenge.split(' '))
 
