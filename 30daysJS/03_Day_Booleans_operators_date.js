@@ -1,12 +1,12 @@
 // Exercises: Level 1
 //1.
-let firstName='Khoa';
-let lastName='Phan';
-let city='HCM';
-let country='VietNam';
-let age=25
-let maritalStatus='marry';
-let year = 2021
+// let firstName='Khoa';
+// let lastName='Phan';
+// let city='HCM';
+// let country='VietNam';
+// let age=25
+// let maritalStatus='marry';
+// let year = 2021
 // console.log(typeof firstName)
 // console.log(typeof lastName)
 // console.log(typeof city)
