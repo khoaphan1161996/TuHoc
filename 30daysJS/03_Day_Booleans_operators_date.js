@@ -88,3 +88,17 @@
 // let enterHours  = Number(prompt('Nhập Enter hours'))
 // let enterRatePerHours  = Number(prompt('Nhập Enter rate per hour'))
 // console.log(`Your weekly earning is ${enterHours*enterRatePerHours}`)
+
+//13. 
+// let birthYear = Number(prompt('Enter birth year'))
+// let age = 2021-birthYear
+// if(age>=18) {
+//     console.log(`You are ${age}. You are old enough to drive`)
+// }
+// else console.log(`You are ${age}. You will be allowed to drive after ${18-age} years.`)
+
+//14. 
+// let numberOfYears = Number(prompt('Enter number of yours you live:'))
+// console.log(`You lived ${numberOfYears*365*24*3600} seconds.`)
+
+// Exercises: Level 3
