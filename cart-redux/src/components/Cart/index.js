@@ -1,5 +1,5 @@
-import CartItem from './CartItem'
-import CartResult from './CartResult'
+import CartItem from '../CartItem'
+import CartResult from '../CartResult'
 
 function Cart() {
   return (

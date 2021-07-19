@@ -1,8 +1,18 @@
+import './style.css'
+
 function Product(props) {
   const {product} = props
   
   const showRatings = (rating) => {
-    
+      let result = []
+      for(let i = 1;i<=rating;i++) {
+        result.push(<i className="fa fa-star"></i>)
+      }
+      for(let j = 1 ;j<=5-rating;j++) {
+        result.push(<i className="fa fa-star-o"></i>)
+      }
+
+      return result
   }
 
   return (
@@ -25,7 +35,9 @@ function Product(props) {
             </strong>
           </h4>
           <ul className="rating">
-            {showRatings(product.rating)}
+            <li>
+              {showRatings(product.rating)}
+            </li>
           </ul>
           <p className="card-text">{product.description}</p>
           <div className="card-footer">
