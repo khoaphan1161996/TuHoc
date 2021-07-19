@@ -1,15 +1,27 @@
-import './style.css'
+import PropTypes from 'prop-types';
+
+Product.propTypes = {
+  product: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      inventory: PropTypes.number.isRequired,
+      rating: PropTypes.number.isRequired,
+  }).isRequired
+}
 
 function Product(props) {
   const {product} = props
-  
+
   const showRatings = (rating) => {
       let result = []
-      for(let i = 1;i<=rating;i++) {
-        result.push(<i className="fa fa-star"></i>)
-      }
-      for(let j = 1 ;j<=5-rating;j++) {
-        result.push(<i className="fa fa-star-o"></i>)
+      for(let i = 1 ; i <= 5 ; i++) {
+        if(i<=rating) {
+          result.push(<i className="fa fa-star" key={i}></i>)
+        }
+        else result.push(<i className="fa fa-star-o" key={i}></i>)
       }
 
       return result
