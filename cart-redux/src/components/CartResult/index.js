@@ -1,3 +1,22 @@
+import PropTypes from 'prop-types';
+
+CartResult.propTypes = {
+  cart: PropTypes.arrayOf(
+    PropTypes.shape({
+      product: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        inventory: PropTypes.number.isRequired,
+        rating: PropTypes.number.isRequired,
+      }).isRequired,
+      quantity: PropTypes.number.isRequired
+    })
+  )
+}
+
 function CartResult(props) {
   const {cart} = props;
   

@@ -1,3 +1,7 @@
+import {useDispatch} from 'react-redux'
+
+import {actAddToCart} from '../../actions/'
+
 import PropTypes from 'prop-types';
 
 Product.propTypes = {
@@ -14,6 +18,7 @@ Product.propTypes = {
 
 function Product(props) {
   const {product} = props
+  const dispatch = useDispatch()
 
   const showRatings = (rating) => {
       let result = []
@@ -25,6 +30,11 @@ function Product(props) {
       }
 
       return result
+  }
+
+  const onAddToCart = (product) => {
+    const action = actAddToCart(product,1)
+    dispatch(action)
   }
 
   return (
@@ -61,6 +71,7 @@ function Product(props) {
                 data-placement="top"
                 title=""
                 data-original-title="Add to Cart"
+                onClick={() => onAddToCart(product)}
               >
                 <i className="fa fa-shopping-cart"></i>
               </a>
