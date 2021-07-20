@@ -1,4 +1,4 @@
-var initialState = [
+let initialState = [
     {
         id:1,
         name:'Iphone 7 Plus',
