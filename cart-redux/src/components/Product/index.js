@@ -1,6 +1,7 @@
 import {useDispatch} from 'react-redux'
 
-import {actAddToCart} from '../../actions/'
+import {actAddToCart,actChangeMessage} from '../../actions/'
+import * as messageConstant from '../../constants/Message'
 
 import PropTypes from 'prop-types';
 
@@ -33,8 +34,10 @@ function Product(props) {
   }
 
   const onAddToCart = (product) => {
-    const action = actAddToCart(product,1)
-    dispatch(action)
+    const actionAddToCart = actAddToCart(product,1)
+    dispatch(actionAddToCart)
+    const actionChangeMessage = actChangeMessage(messageConstant.MSG_ADD_TO_CART_SUCCESS)
+    dispatch(actionChangeMessage)
   }
 
   return (

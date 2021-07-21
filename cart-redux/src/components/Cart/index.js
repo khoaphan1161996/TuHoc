@@ -9,7 +9,7 @@ function Cart() {
   const cart = useSelector(state => state.cart)
   
   const showCartItem = (cart) => {
-    let result = message.MSG_CART_EMPTY
+    let result = <tr><td>{message.MSG_CART_EMPTY}</td></tr> 
     if(cart.length > 0) {
       result = cart.map((cartItem, index)=> 
         <CartItem key={cartItem.product.id} cartItem={cartItem} />

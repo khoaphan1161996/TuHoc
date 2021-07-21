@@ -1,3 +1,8 @@
+import {useDispatch} from "react-redux"
+
+import {actDeleteProductInCart,actChangeMessage} from '../../actions/'
+import * as messageConstant from '../../constants/Message'
+
 import PropTypes from 'prop-types';
 
 CartItem.propTypes = {
@@ -18,8 +23,17 @@ CartItem.propTypes = {
 function CartItem(props) {
   const {cartItem} = props
 
+  const dispatch = useDispatch()
+
   const showSubtotal = (price,quantity) => {
     return price*quantity 
+  }
+
+  const onDelete = (product) => {
+    const actionDeleteProductInCart = actDeleteProductInCart(product)
+    dispatch(actionDeleteProductInCart)
+    const actionChangeMessage = actChangeMessage(messageConstant.MSG_DELETE_PRODUCT_IN_CART_SUCCESS)
+    dispatch(actionChangeMessage)
   }
 
   return (
@@ -63,6 +77,7 @@ function CartItem(props) {
           data-placement="top"
           title=""
           data-original-title="Remove item"
+          onClick = {() => onDelete(cartItem.product)}
         >
           X
         </button>
