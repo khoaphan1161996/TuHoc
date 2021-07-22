@@ -1,9 +1,10 @@
 import {useDispatch} from "react-redux"
 
-import {actDeleteProductInCart,actChangeMessage} from '../../actions/'
+import {actDeleteProductInCart,actChangeMessage,actUpdateProductInCart} from '../../actions/'
 import * as messageConstant from '../../constants/Message'
 
 import PropTypes from 'prop-types';
+import { useState } from "react";
 
 CartItem.propTypes = {
   cartItem: PropTypes.shape({
@@ -30,10 +31,28 @@ function CartItem(props) {
   }
 
   const onDelete = (product) => {
+    // delete
     const actionDeleteProductInCart = actDeleteProductInCart(product)
     dispatch(actionDeleteProductInCart)
+    // thay đổi mess
     const actionChangeMessage = actChangeMessage(messageConstant.MSG_DELETE_PRODUCT_IN_CART_SUCCESS)
     dispatch(actionChangeMessage)
+  }
+
+  const onUpdateQuantity = (product, quantity) => {
+    //update
+    if(quantity>0) {
+      const actionUpdateProductInCart = actUpdateProductInCart(product,quantity)
+      dispatch(actionUpdateProductInCart)
+      const actionChangeMessage = actChangeMessage(messageConstant.MSG_UPDATE_CART_SUCCESS)
+      dispatch(actionChangeMessage)
+    }
+    else {
+      const actionDeleteProductInCart = actDeleteProductInCart(product)
+      dispatch(actionDeleteProductInCart)
+      const actionChangeMessage = actChangeMessage(messageConstant.MSG_DELETE_PRODUCT_IN_CART_SUCCESS)
+      dispatch(actionChangeMessage)
+    }
   }
 
   return (
@@ -57,12 +76,14 @@ function CartItem(props) {
           <label
             className="btn btn-sm btn-primary 
                       btn-rounded waves-effect waves-light"
+            onClick = {() => onUpdateQuantity(cartItem.product,cartItem.quantity-1)}
           >
             <a>—</a>
           </label>
           <label
             className="btn btn-sm btn-primary
                       btn-rounded waves-effect waves-light"
+            onClick = {() => onUpdateQuantity(cartItem.product,cartItem.quantity+1)}
           >
             <a>+</a>
           </label>

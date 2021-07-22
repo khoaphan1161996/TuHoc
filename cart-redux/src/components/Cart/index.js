@@ -3,7 +3,7 @@ import CartResult from '../CartResult'
 
 import * as message from '../../constants/Message'
 
-import {useSelector,useDispatch} from 'react-redux'
+import {useSelector} from 'react-redux'
 
 function Cart() {
   const cart = useSelector(state => state.cart)
