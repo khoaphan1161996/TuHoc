@@ -16,7 +16,6 @@
 // // css li 
 // let li = document.querySelectorAll('li')
 // for(let i = 0; i < li.length; i++) {
-//     let flag = true;
 
 //     li[i].style.display = 'inline-block'
 //     li[i].style.width = '100px'
