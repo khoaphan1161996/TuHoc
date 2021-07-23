@@ -48,15 +48,24 @@
 // }, 1000);
 
 // Completed challenge has background green
+// let ul = document.querySelector('ul')
+// ul.style.listStyle = "none";
+
 // let ulItem = document.querySelectorAll('li')
 // for(let i = 0; i < ulItem.length; i++) {
 //     if(i == 0) {
 //         ulItem[i].style.background = 'green'
+//         ulItem[i].style.borderBottom = "thick solid white"
+//         ulItem[i].style.padding = "10px"
 //     }
 //     else if (i == 1) {
 //         ulItem[i].style.background = 'yellow'
+//         ulItem[i].style.borderBottom = "thick solid white"
+//         ulItem[i].style.padding = "10px"
 //     }
 //     else {
 //         ulItem[i].style.background = 'red'
+//         ulItem[i].style.borderBottom = "thick solid white"
+//         ulItem[i].style.padding = "10px"
 //     }
 // }
