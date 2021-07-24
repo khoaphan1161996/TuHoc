@@ -5,8 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="24_Day_Project_solar_system.css">
+
+    <!-- import font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Background universe -->
+    <div class="bg"></div>
+    <div class="star-field">
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+
+    <!-- Main -->
+    <main class="container">
+        <h1 class="title">Calculate a weight of an object on a planet</h1>
+        <div class="search-group">
+            <input type="text"  id="search-text"  class="search-group-item">
+            <select id="select-planet" class="search-group-item">
+                <option class="select-item" value="0">--Select planet--</option>
+                <option class="select-item" value="9.81">Earth</option>
+                <option class="select-item" value="3.61">Mercury</option>
+                <option class="select-item" value="8.83">Venus</option>
+                <option class="select-item" value="3.75">Mars</option>
+                <option class="select-item" value="26.0">Jupiter</option>
+                <option class="select-item" value="11.2">Saturn</option>
+                <option class="select-item" value="10.5">Uranus</option>
+                <option class="select-item" value="13.3">Neptune</option>
+                <option class="select-item" value="0.61">Pluto</option>
+              </select>
+            <button type="button" class="search-group-item">Calculate weight</button>
+        </div>
+        <div id="result"></div>
+        
+    </main>
+
     <script src="24_Day_Project_solar_system.js" ></script>
 </body>
 </html>
