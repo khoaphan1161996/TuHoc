@@ -197,13 +197,28 @@ const countries = [
 // Selector 
 let search = document.querySelector('.search')
 let searchBtn = document.querySelector('.search-icon')
-let result = document.querySelector('.result')
+let result = document.querySelector('.container')
 
 searchBtn.addEventListener('click', e => {
     let searchValue = search.value
-    
-    let findValue = /(searchValue...)/gi
-    let result = countries.filter(country => country.indexOf(findValue) !== -1)
+    let country = countries.filter(country => country.indexOf(searchValue) !== -1)
+    let count = country.length + 1
 
-    console.log(result)
+    let textDesc = document.getElementById('text-decsription')
+    textDesc.innerHTML = `
+                            <p>Countries containing <span class="red">${searchValue}
+                            </span> are <span class="green">${count}</span></p>
+                          `
+    
+    let resultInner = []
+    for(let i = 0; i < country.length; i++) {
+      resultInner.push(`
+      <div class="container-item">
+          <div class="container-item-text">
+              ${country[i]}
+          </div>
+        </div>`)
+    }
+
+    result.innerHTML = resultInner.join('')
 })

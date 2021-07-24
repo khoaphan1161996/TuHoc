@@ -91,3 +91,11 @@ html, body {
   font-size:28px;
   letter-spacing: 5px;
 }
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
