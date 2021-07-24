@@ -1,0 +1,68 @@
+:root {
+    --orange--color:orange;
+}
+
+html, body {
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(228, 226, 226);
+}
+
+.container {
+    text-align:center;
+}
+
+.header-top-title {
+    color:var(--orange--color);
+    font-size:40px;
+    font-weight: 500;
+    letter-spacing:3px;
+    margin-bottom: 8px;
+}
+
+.header-top-desc {
+    font-size:16px;
+    font-weight:400
+}
+
+.form {
+    background-color: #fff;
+    padding:10px;
+    box-shadow: 4px 4px 5px 4px #ccc;
+}
+
+.btn {
+    background-color: var(--orange--color);
+    outline: none;
+    cursor: pointer;
+    border: none;
+    padding:10px 20px 10px 20px;
+    margin:2px;
+    border-radius:4px
+}
+
+.form-desc {
+    margin:5px
+}
+
+.lang-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:10px
+}
+
+.name {
+    flex: 3;
+}
+
+.progress {
+    flex: 6;
+}
+
+#myProgress {
+    width: 100%;
+}
+
+.score {
+    flex: 3
+}
