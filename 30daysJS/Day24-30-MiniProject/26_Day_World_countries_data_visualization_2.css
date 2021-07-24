@@ -1,0 +1,17 @@
+html, body {
+  font-family: 'Roboto', sans-serif;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+.header {
+  position: relative;
+  padding-top: 20%;       /* 50% chiều cao của chính nó */
+  background: url('https://i1-vnexpress.vnecdn.net/2021/01/01/VNENASA-1609493949-1784-1609494096.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=-6P-gSsm_OQU3RZI0FKqSw')  center / cover no-repeat ;
+
+  
+}
