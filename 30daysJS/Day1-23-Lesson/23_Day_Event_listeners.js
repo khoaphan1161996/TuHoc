@@ -53,7 +53,7 @@ function generateRandomNumbers() {
         else {
             let p = document.createElement('p')
             p.style.color = 'red'
-            p.textContent = 'Input value must be a number'
+            p.textContent = 'Input value must be a number positive integer'
             document.body.appendChild(p)
         }
     })
