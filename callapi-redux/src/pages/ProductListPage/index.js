@@ -1,9 +1,13 @@
 import React from 'react'
+import {useSelector} from 'react-redux'
+
 import ProductList from '../../components/ProductList'
 import ProductItem from '../../components/ProductItem'
 
+
 function ProductListPage(props) {
-    const products = []
+    const products = useSelector(state => state.products)
+
     const showProduct = (products) => {
         let result = null
         if(products.length > 0) {
@@ -13,6 +17,7 @@ function ProductListPage(props) {
         }
         return result 
     }
+
     return (
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <button type="button" className="btn btn-info">
