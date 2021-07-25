@@ -1,6 +1,5 @@
 import React from 'react'
 import './style.css'
-import PrductItem from '../ProductItem'
 
 function ProductList(props) {
     return (

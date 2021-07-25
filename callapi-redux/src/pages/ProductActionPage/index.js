@@ -13,7 +13,7 @@ function ProductActionPage(props) {
           <input type="number" className="form-control" />
         </div>
         <div className="form-group">
-          <label className="">Trạng thái: </label>
+          <label className="">Trạng thái: </label> 
         </div>
         <div className="checkbox">
             <label>
@@ -21,7 +21,7 @@ function ProductActionPage(props) {
                 Còn hàng
             </label>
         </div>
-        <button className="btn btn-primary">Luw lại</button>
+        <button className="btn btn-primary">Lưu lại</button>
       </form>
     </div>
   );

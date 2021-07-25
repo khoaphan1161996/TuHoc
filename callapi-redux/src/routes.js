@@ -16,12 +16,12 @@ const routes = [
         component: () => <ProductListPage />,
     },
     {
-        path: '/products/add',
+        path: '/product/add',
         exact: false,
         component: () => <ProductActionPage />,
     },
     {
-        path: '/products/:id/edit',
+        path: '/product/:id/edit',
         exact: false,
         component: () => <ProductActionPage />,
     },
