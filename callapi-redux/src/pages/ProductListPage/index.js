@@ -1,12 +1,17 @@
-import React from 'react'
-import {useSelector} from 'react-redux'
+import React, { useEffect, useState } from 'react'
 
 import ProductList from '../../components/ProductList'
 import ProductItem from '../../components/ProductItem'
-
+import callAPi from '../../utils/CallApi'
 
 function ProductListPage(props) {
-    const products = useSelector(state => state.products)
+    const [products,setProducts] = useState([])
+
+    useEffect(() => {
+        callAPi('products','GET',null).then( res => {
+            setProducts(res.data)
+        })
+    }, [])
 
     const showProduct = (products) => {
         let result = null

@@ -14,7 +14,7 @@ function ProductItem(props) {
       <td>{product.name}</td>
       <td>{product.price}</td>
       <td>
-        <span className={product.status ? 'badge bg-warning' : 'badge bg-default'}>
+        <span className={product.status ? 'badge bg-warning' : 'badge bg-danger'}>
           {product.status ? 'Còn hàng' : 'Hết hàng'}
         </span>
       </td>
