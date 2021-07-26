@@ -6,7 +6,7 @@ const callAPi = async (endpoint, method = "GET", body) => {
     let response = await axios({
       METHOD: method,
       url: `${Config.API_URL}/${endpoint}`,
-      data: body,
+      data: body
     });
 
     return response

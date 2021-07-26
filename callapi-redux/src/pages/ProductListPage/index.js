@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import ProductList from '../../components/ProductList'
 import ProductItem from '../../components/ProductItem'
@@ -25,9 +26,9 @@ function ProductListPage(props) {
 
     return (
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <button type="button" className="btn btn-info">
+            <Link to="/product/add" className="btn btn-info">
               Thêm sản phẩm
-            </button>
+            </Link>
             <ProductList>
                 {showProduct(products)}
             </ProductList>
