@@ -5,6 +5,7 @@ import routes from './routes';
 
 
 function App() {
+  // Tạo các route
   const showContentMenus = (routes) => {
     let result = ''
     if(routes.length > 0) {

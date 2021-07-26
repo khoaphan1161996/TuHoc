@@ -1,11 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom"
 import "./style.css";
 
 ProductItem.propTypes = {};
 
 function ProductItem(props) {
   const {product,index} = props;
+
+  // Khi bấm vào nút Xóa thì truyền id lên
+  const onDelete = (id) => {
+    if(window.confirm('Are you sure you want to delete')) {
+      props.onDelete(id)
+    }
+  }
 
   return (
     <tr>
@@ -19,10 +27,10 @@ function ProductItem(props) {
         </span>
       </td>
       <td>
-        <button className="btn btn-success" type="button">
+        <Link className="btn btn-success" to={`product/${product.id}/edit`}>
           Sửa
-        </button>
-        <button className="btn btn-danger" type="button">
+        </Link>
+        <button className="btn btn-danger" type="button" onClick={()=>onDelete(product.id)}>
           Xóa
         </button>
       </td>

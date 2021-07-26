@@ -1,14 +1,30 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from 'axios'
-import {useHistory} from "react-router-dom"
+import {useHistory,useParams} from "react-router-dom"
+
+import * as Config from '../../constants/Config'
 
 function ProductActionPage() {
+  const history = useHistory()
+  let {id} = useParams()
+
+  const [idProduct,setIdProduct] = useState("");
   const [txtName, setTxtName] = useState("");
   const [txtPrice, setTxtPrice] = useState("");
   const [chkbStatus, setChkbStatus] = useState("");
 
-  const history = useHistory()
+  // Lần đầu chạy trang thì get theo id và setState
+  useEffect(() => {
+    axios.get(`${Config.API_URL}/products/${id}`).then(res => {
+      let data = res.data 
+      setIdProduct(data.id)
+      setTxtName(data.name)
+      setTxtPrice(data.price)
+      setChkbStatus(data.status)
+    })
+  }, [])
 
+  // Dữ liệu khi nhập vào sẽ dc setState
   const onChangeValue = (e) => {
     const target = e.target;
     const name = target.name;
@@ -20,16 +36,27 @@ function ProductActionPage() {
     } else setChkbStatus(value);
   };
 
+  // Khi bấm Submit
   const onSave = (e) => {
+    // Chặn sự load trang của submit
     e.preventDefault();
 
-    axios.post(`https://60f9830dee56ef0017975e84.mockapi.io/api/products`,{
-      name: txtName,
-      price: txtPrice,
-      status: chkbStatus,
-    }).then((res) => history.push({pathname: '/products'}))
-    .catch((err) => console.log(err));
-    
+    if(idProduct) { // có id thì update
+      axios.put(`${Config.API_URL}/products/${id}`,{
+        name: txtName,
+        price:txtPrice,
+        status: chkbStatus
+      }).then((res) => history.push({pathname: '/products'}))
+      .catch((err) => console.log(err));
+    }
+    else { // không có id thì add
+      axios.post(`${Config.API_URL}/products`,{
+        name: txtName,
+        price: txtPrice,
+        status: chkbStatus,
+      }).then((res) => history.push({pathname: '/products'}))
+      .catch((err) => console.log(err));
+    }
   };
 
   return (
@@ -65,6 +92,7 @@ function ProductActionPage() {
               name="status"
               value={chkbStatus}
               onChange={onChangeValue}
+              checked={chkbStatus}
             />
             Còn hàng
           </label>

@@ -16,6 +16,7 @@ const menus = [
 ];
 
 function Menu(props) {
+  // Tạo showMenu trên header
   const showMenus = (menus) => {
     let result = null;
     if (menus.length > 0) {
