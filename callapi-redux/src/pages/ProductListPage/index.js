@@ -1,23 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import {useSelector,useDispatch} from 'react-redux'
 
 import ProductList from '../../components/ProductList'
 import ProductItem from '../../components/ProductItem'
 import callAPi from '../../utils/CallApi'
+import {actFetchProducts} from '../../actions'
 import * as Config from '../../constants/Config'
 
 function ProductListPage(props) {
     const [products,setProducts] = useState([])
+    // const dispatch = useDispatch()
+    // const products = useSelector(state => state.products)
 
     // Load trang thì load dữ liệu về
     useEffect(() => {
         callAPi('products','GET',null).then( res => {
             setProducts(res.data)
+            // const actionFetch = actFetchProducts(res.data)
+            // dispatch(actionFetch)
         })
     }, [])
 
-    // Khi nhận được id truyền lên thì tiến hành xóa trên sever và xóa trên array hiện tại để giao diện cập nhập
+    // Khi nhận được id truyền lên thì tiến hành xóa trên sever và xóa trên store để giao diện cập nhập
     const onDelete = (id) => {
         axios.delete(`${Config.API_URL}/products/${id}`).then( res => {
             if(res.status===200) {
