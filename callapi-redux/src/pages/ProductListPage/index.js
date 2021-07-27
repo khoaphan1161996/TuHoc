@@ -6,12 +6,12 @@ import {useSelector,useDispatch} from 'react-redux'
 import ProductList from '../../components/ProductList'
 import ProductItem from '../../components/ProductItem'
 import callAPi from '../../utils/CallApi'
-import {actFetchProducts} from '../../actions'
+import {actFetchProducts,actDeleteProduct} from '../../actions'
 import * as Config from '../../constants/Config'
 
 function ProductListPage(props) {
     const [products,setProducts] = useState([])
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
     // const products = useSelector(state => state.products)
 
     // Load trang thì load dữ liệu về
@@ -29,6 +29,8 @@ function ProductListPage(props) {
             if(res.status===200) {
                 const newProducts = products.filter(product => product.id !== id)
                 setProducts(newProducts)
+                // const actionDeleteProduct = actDeleteProduct(res.data)
+                // dispatch(actionDeleteProduct)
             }
         })
     }

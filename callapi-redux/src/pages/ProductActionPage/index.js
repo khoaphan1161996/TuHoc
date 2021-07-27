@@ -1,12 +1,17 @@
 import React, { useState,useEffect } from "react";
 import axios from 'axios'
 import {useHistory,useParams} from "react-router-dom"
+import {useDispatch,useSelector} from 'react-redux'
 
+import {actAddProduct,actEditProduct,actUpdateProduct} from '../../actions'
 import * as Config from '../../constants/Config'
 
 function ProductActionPage() {
   const history = useHistory()
+  const dispatch = useDispatch()
   let {id} = useParams()
+
+  const itemEditing = useSelector(state => state.itemEditing)
 
   const [idProduct,setIdProduct] = useState("");
   const [txtName, setTxtName] = useState("");
@@ -16,13 +21,25 @@ function ProductActionPage() {
   // Lần đầu chạy trang thì get theo id và setState
   useEffect(() => {
     axios.get(`${Config.API_URL}/products/${id}`).then(res => {
-      let data = res.data 
-      setIdProduct(data.id)
-      setTxtName(data.name)
-      setTxtPrice(data.price)
-      setChkbStatus(data.status)
+      // let data = res.data 
+      // setIdProduct(data.id)
+      // setTxtName(data.name)
+      // setTxtPrice(data.price)
+      // setChkbStatus(data.status)
+      
+      const actionEditProduct = actEditProduct(res.data,id)
+      dispatch(actionEditProduct)
     })
   }, [])
+
+  useEffect(() => {
+    if(itemEditing) {
+      setIdProduct(itemEditing.id)
+      setTxtName(itemEditing.name)
+      setTxtPrice(itemEditing.price)
+      setChkbStatus(itemEditing.status)
+    }
+  }, [itemEditing])
 
   // Dữ liệu khi nhập vào sẽ dc setState
   const onChangeValue = (e) => {
@@ -46,7 +63,11 @@ function ProductActionPage() {
         name: txtName,
         price:txtPrice,
         status: chkbStatus
-      }).then((res) => history.push({pathname: '/products'}))
+      }).then((res) => {
+        const actionUpdate = actUpdateProduct(res.data,id)
+        dispatch(actionUpdate)
+        history.push({pathname: '/products'})
+      })
       .catch((err) => console.log(err));
     }
     else { // không có id thì add
@@ -54,7 +75,11 @@ function ProductActionPage() {
         name: txtName,
         price: txtPrice,
         status: chkbStatus,
-      }).then((res) => history.push({pathname: '/products'}))
+      }).then((res) => {
+        const actionAdd = actAddProduct(res.data)
+        dispatch(actionAdd)
+        history.push({pathname: '/products'})
+      })
       .catch((err) => console.log(err));
     }
   };
