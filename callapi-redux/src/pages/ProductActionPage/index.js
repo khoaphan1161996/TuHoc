@@ -20,24 +20,21 @@ function ProductActionPage() {
 
   // Lần đầu chạy trang thì get theo id và setState
   useEffect(() => {
-    axios.get(`${Config.API_URL}/products/${id}`).then(res => {
-      // let data = res.data 
-      // setIdProduct(data.id)
-      // setTxtName(data.name)
-      // setTxtPrice(data.price)
-      // setChkbStatus(data.status)
-      
-      const actionEditProduct = actEditProduct(res.data,id)
-      dispatch(actionEditProduct)
-    })
+    if(id){
+      axios.get(`${Config.API_URL}/products/${id}`).then(res => {
+        
+        const actionEditProduct = actEditProduct(res.data,id)
+        dispatch(actionEditProduct)
+      })
+    }
   }, [])
 
   useEffect(() => {
-    if(itemEditing) {
-      setIdProduct(itemEditing.id)
-      setTxtName(itemEditing.name)
-      setTxtPrice(itemEditing.price)
-      setChkbStatus(itemEditing.status)
+    if(id && itemEditing) {
+        setIdProduct(itemEditing.id)
+        setTxtName(itemEditing.name)
+        setTxtPrice(itemEditing.price)
+        setChkbStatus(itemEditing.status)
     }
   }, [itemEditing])
 

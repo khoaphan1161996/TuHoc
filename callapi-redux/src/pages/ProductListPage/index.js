@@ -10,16 +10,14 @@ import {actFetchProducts,actDeleteProduct} from '../../actions'
 import * as Config from '../../constants/Config'
 
 function ProductListPage(props) {
-    const [products,setProducts] = useState([])
     const dispatch = useDispatch()
-    // const products = useSelector(state => state.products)
+    const products = useSelector(state => state.products)
 
     // Load trang thì load dữ liệu về
     useEffect(() => {
         callAPi('products','GET',null).then( res => {
-            setProducts(res.data)
-            // const actionFetch = actFetchProducts(res.data)
-            // dispatch(actionFetch)
+            const actionFetch = actFetchProducts(res.data)
+            dispatch(actionFetch)
         })
     }, [])
 
@@ -27,10 +25,9 @@ function ProductListPage(props) {
     const onDelete = (id) => {
         axios.delete(`${Config.API_URL}/products/${id}`).then( res => {
             if(res.status===200) {
-                const newProducts = products.filter(product => product.id !== id)
-                setProducts(newProducts)
-                // const actionDeleteProduct = actDeleteProduct(res.data)
-                // dispatch(actionDeleteProduct)
+                const actionDeleteProduct = actDeleteProduct(res.data)
+                dispatch(actionDeleteProduct)
+                
             }
         })
     }
