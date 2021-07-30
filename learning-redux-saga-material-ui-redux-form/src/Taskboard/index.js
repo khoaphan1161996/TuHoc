@@ -1,3 +1,4 @@
+import React,{useState} from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles'
 
@@ -7,6 +8,7 @@ import AddIcon from '@material-ui/icons/Add';
 import Grid from '@material-ui/core/Grid';
 
 import TaskList from '../components/TaskList';
+import TaskForm from '../components/TastForm'
 
 const listTask = [
   {
@@ -18,7 +20,7 @@ const listTask = [
   {
     id:1,
     title:'Play football',
-    description: 'With myy friend',
+    description: 'With my friend',
     status: 2
   },
   {
@@ -31,6 +33,16 @@ const listTask = [
 
 function Taskboard(props) {
   const {classes} = props;
+
+  const [open,setOpen] = useState(false)
+
+  const handleClose = (e) => {
+    setOpen(false)
+  }
+
+  const openForm = (e) => {
+    setOpen(true)
+  }
 
   const renderBoard = () => {
     let xhtml = null 
@@ -45,13 +57,23 @@ function Taskboard(props) {
     )
     return xhtml
   }
+
+  const renderForm = () => {
+    let xhtml = null 
+    xhtml = (
+      <TaskForm open={open} onClose={handleClose}/>
+    )
+    return xhtml
+  }
   
   return (
       <div className={classes.taskboard}>
-          <Button variant='contained' color='primary' className={classes.button}>
+          <Button variant='contained' color='primary' className={classes.button}
+          onClick={openForm}>
             <AddIcon />  THÊM MỚI CÔNG VIỆC
           </Button>
           {renderBoard()}
+          {renderForm()}
       </div>
   );
 }
