@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import {useDispatch} from 'react-redux'
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 
 import { STATUSES } from "../constants";
+import * as TaskActions from '../actions/task'
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import Grid from "@material-ui/core/Grid";
@@ -33,8 +35,13 @@ const listTask = [
 
 function Taskboard(props) {
   const { classes } = props;
-
   const [open, setOpen] = useState(false);
+  // const listTask = useSelector(state => state.task)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(TaskActions.fetchListTaskRequest)
+  },[dispatch])
 
   const handleClose = (e) => {
     setOpen(false);
