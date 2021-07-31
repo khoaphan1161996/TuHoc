@@ -10,7 +10,7 @@ function TaskList(props) {
     const {classes,taskFiltered,status} = props;
 
     return (
-        <Grid item md={4} xs={12} key={status.value}>
+        <Grid item md={4} xs={12}>
           <Box mt={2} mb={2}><div className={classes.status}>{status.label}</div></Box>
           
           <div className={classes.wrapperListTask}>
