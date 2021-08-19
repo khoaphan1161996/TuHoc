@@ -28,6 +28,10 @@ function ProductListPage(props) {
                 const actionDeleteProduct = actDeleteProduct(res.data)
                 dispatch(actionDeleteProduct)
                 
+                callAPi('products','GET',null).then( res => {
+                    const actionFetch = actFetchProducts(res.data)
+                    dispatch(actionFetch)
+                })
             }
         })
     }
