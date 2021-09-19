@@ -18,7 +18,9 @@
     {
       "name": "Minh Khoa",
       "phone": "hghg",
-      "id": "CY-GYHmr9"
+      "id": "CY-GYHmr9",
+      "email": "minhkhoa@gmail.com",
+      "password": "123456"
     }
   ]
 }
